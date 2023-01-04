@@ -1,0 +1,26 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['bootstrap_5_layout.html.twig']
+    globals: 
+        admin_name: '%env(ADMIN_NAME)%'
+        admin_address: '%env(ADMIN_ADDRESS)%'
+        admin_email: '%env(ADMIN_EMAIL)%'
+        admin_company: '%env(ADMIN_COMPANY)%'
+        admin_telephone: '%env(ADMIN_TELEPHONE)%'
+        admin_siret: '%env(ADMIN_SIRET)%'
+        admin_host: '%env(ADMIN_HOST)%'
+        admin_code_APE: '%env(CODE_APE)%'
+        price: '%env(PACK_PRICE)%'
+        currency: '%env(PACK_CURRENCY)%'
+        description: '%env(PACK_DESCRIPTION)%'
+        quantity: '%env(PACK_QUANTITY)%'
+        tva: '%env(TVA)%'
+        
+    
+when@test:
+    twig:
+        strict_variables: true
+
+
+
+        

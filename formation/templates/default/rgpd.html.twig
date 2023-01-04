@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block title %}RGPD{% endblock %}
+{% block body %}
+  <header>
+    <!--Navbar-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('index')}}">Accueil</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('commandez')}}">Achetez la {{ description }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('cgv')}}">Conditions générales de vente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ path('rgpd')}}">Réglementation concernant les données personnelles</a>
+            </li>
+            <li class="nav-item">
+              <a id="licence" class="nav-link" aria-current="page" href="{{ path('app_licence')}}">licence</a>
+            </li>
+            <li class="nav-item">
+              <a id="contact" class="nav-link" aria-current="page" href="{{ path('app_contact')}}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a id="connecter" class="nav-link" aria-current="page" href="{{ path('register')}}">s'enregistrer</a>
+            </li>
+            <li class="nav-item">
+              <a id="login" class="nav-link" aria-current="page" href="{{ path('app_login')}}">se connecter/se déconnecter</a>
+            </li>
+            <li class="nav-item">
+              <a id="user" class="nav-link" aria-current="page" href="{{ path('app_user')}}">mon espace</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1>Réglement général sur la protection des données</h1>
+      <br/>
+      <ol>
+        <li>Voici la liste des données personnelles qui vous sont demandées : Nom, Prénom, adresse postale, adresse e-mail, données de carte bancaire.</li>
+        <li>{{ admin_company }} vous demande et conserve votre adresse e-mail, nom et prénom, adresse postale et votre facture. La passerelle de paiement Stripe vous demande et conserve votre nom, prénom, e-mail, adresse postale, coordonnées de carte bancaire.</li>
+        <li>Les données qui vous sont demandées servent au paiement de la {{ description }} et à la réalisation et l'envoie de la facture par e-mail. 
+        Cette dernière doit comporter un numéro de facture, votre nom, prénom, adresse, un moyen  de vous contacter (votre adresse e-mail), la date d'achat, la designation du produit, la quantité, le prix, la monnaie, 
+        les références de l'entreprise qui vous émet la facture (Nom, adresse, téléphone, e-mail, N° siret, code APE, la mention : la TVA est {{ tva }}). </li>
+        <li>Les données sont conservées 10 ans en archivage intermediaire en application du Code de commerce et sont ensuite supprimées.</li>
+        <li>Pour toutes questions relatives à vos données personnelles, contactez {{ admin_name }} en allant dans la rubrique <a href="{{ path('app_contact')}}">contact</a>. Vous obtiendrez une réponse dans un délai maximum d'un mois.</li>
+      </ol>
+    </section>
+  </main>
+{% endblock %}

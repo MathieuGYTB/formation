@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour !{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <header>
+    <!--Navbar-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('index')}}">Accueil</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('commandez')}}">Achetez la {{ description }}</a>
+                </li>
+                <li class="nav-item">
+                    <a id="CGV" class="nav-link" href="{{ path('cgv')}}">Conditions générales de vente</a>
+                </li>
+                <li class="nav-item">
+                    <a id="RGPD" class="nav-link" aria-current="page" href="{{ path('rgpd')}}">Réglementation concernant les données personnelles</a>
+                </li>
+                <li class="nav-item">
+                    <a id="licence" class="nav-link" aria-current="page" href="{{ path('app_licence')}}">licence</a>
+                </li>
+                <li class="nav-item">
+                    <a id="contact" class="nav-link" aria-current="page" href="{{ path('app_contact')}}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a id="connecter" class="nav-link" aria-current="page" href="{{ path('register')}}">s'enregistrer</a>
+                </li>
+                <li class="nav-item">
+                    <a id="login" class="nav-link" aria-current="page" href="{{ path('app_login')}}">se connecter/se déconnecter</a>
+                </li>
+                <li class="nav-item">
+                    <a id="user" class="nav-link active" aria-current="page" href="{{ path('app_user')}}">mon espace</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="example-wrapper">
+                <h1>Bonjour {{ user_firstname }} !</h1>
+                <br/>
+                <div class="text">votre adresse email a été vérifiée ✅</div>
+                <br/>
+                <h2>Vos données personnelles :</h2>
+                <div class="text">{{ user_name }} {{ user_firstname }}</div>
+                <div class="text">{{ user_email }}</div>
+                <br/>
+                <br/>
+                
+                {% if is_granted('ROLE_PAID') %}
+                <h2>Votre {{ description }}</h2>
+                <br/>
+                    <div class="text-center">
+                        <a class="btn btn-success" href="{{asset('packDeDémarrage.zip')}}" download="packDeDémarrage.zip">Télécharger la {{ description }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    <main>
+{% endblock %}

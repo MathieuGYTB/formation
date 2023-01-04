@@ -1,0 +1,56 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+app_contact:
+    path: /profile/contact
+    controller: App\Controller\ContactController::contact
+
+commandez:
+    path: /profile/commandez
+    controller: App\Controller\PaymentController::checkout
+
+cgv:
+    path: /cgv
+    controller: App\Controller\DefaultController::cgv
+
+rgpd:
+    path: /rgpd
+    controller: App\Controller\DefaultController::rgpd
+
+register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+app_verify_email:
+    path: /verify/email
+    controller: App\Controller\RegistrationController::verifyUserEmail
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_user:
+    path: /profile/user
+    controller: App\Controller\UserController::user
+
+app_verify:
+    path: /verifylink
+    controller: App\Controller\RegistrationController::verify
+
+app_success:
+    path: /profile/kgfnhtl1616gbvh
+    controller: App\Controller\PaymentController::success
+    
+
+app_licence:
+    path: /licence
+    controller: App\Controller\DefaultController::licence
+
+app_cancel:
+    path: /cancel
+    controller: App\Controller\PaymentController::cancel

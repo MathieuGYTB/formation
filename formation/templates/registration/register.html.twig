@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+{% block title %}s'enregistrer{% endblock %}
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('index')}}">Accueil</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ path('commandez')}}">Achetez la {{ description }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="CGV" class="nav-link" href="{{ path('cgv')}}">Conditions générales de vente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="RGPD" class="nav-link" aria-current="page" href="{{ path('rgpd')}}">Réglementation concernant les données personnelles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="licence" class="nav-link" aria-current="page" href="{{ path('app_licence')}}">licence</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="contact" class="nav-link" aria-current="page" href="{{ path('app_contact')}}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="connecter" class="nav-link active" aria-current="page" href="{{ path('register')}}">s'enregistrer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="login" class="nav-link" aria-current="page" href="{{ path('app_login')}}">se connecter/se déconnecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="user" class="nav-link" aria-current="page" href="{{ path('app_user')}}">mon espace</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>S'inscrire</h1>
+            
+                {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.nom) }}
+                    <br/>
+                        {{ form_row(registrationForm.prenom) }}
+                    <br/>
+                        {{ form_row(registrationForm.email) }}
+                    <br/>
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        })}}
+                    <br/>
+                        <a href="{{ path('rgpd')}}">Règlementation concernant les données utilisateurs</a>
+                        {{ form_row(registrationForm.agreeTerms, {
+                            label: "j'accepte"
+                        }) }}
+                    <br/>
+                        <button type="submit" class="btn send-button btn-primary">valider</button>
+                {{ form_end(registrationForm) }}
+            
+        </section>
+    </main>
+{% endblock %}
+
